@@ -4,12 +4,97 @@ one:
   name: MyString
   phone: MyString
   email: MyString
-  password: MyString
+  password_digest: MyString
   dob: 2020-07-14 13:06:56
 
 two:
   name: MyString
   phone: MyString
   email: MyString
-  password: MyString
+  password_digest: MyString
   dob: 2020-07-14 13:06:56
+
+three:
+  name: MyString
+  phone: MyString
+  email: MyString
+  password_digest: MyString
+  dob: 2020-07-14 13:06:56
+
+four:
+  name: MyString
+  phone: MyString
+  email: MyString
+  password_digest: MyString
+  dob: 2020-07-14 13:06:56
+  
+five:
+  name: MyString
+  phone: MyString
+  email: MyString
+  password_digest: MyString
+  dob: 2020-07-14 13:06:56
+  
+six:
+  name: MyString
+  phone: MyString
+  email: MyString
+  password_digest: MyString
+  dob: 2020-07-14 13:06:56
+  
+seven:
+  name: MyString
+  phone: MyString
+  email: MyString
+  password_digest: MyString
+  dob: 2020-07-14 13:06:56
+  
+eight:
+  name: MyString
+  phone: MyString
+  email: MyString
+  password_digest: MyString
+  dob: 2020-07-14 13:06:56
+  
+nine:
+  name: MyString
+  phone: MyString
+  email: MyString
+  password_digest: MyString
+  dob: 2020-07-14 13:06:56
+  
+ten:
+  name: MyString
+  phone: MyString
+  email: MyString
+  password_digest: MyString
+  dob: 2020-07-14 13:06:56
+  
+eleven:
+  name: MyString
+  phone: MyString
+  email: MyString
+  password_digest: MyString
+  dob: 2020-07-14 13:06:56
+  
+twelve:
+  name: MyString
+  phone: MyString
+  email: MyString
+  password_digest: MyString
+  dob: 2020-07-14 13:06:56
+  
+# thirten:
+#   name: MyString
+#   phone: MyString
+#   email: MyString
+#   password_digest: MyString
+#   dob: 2020-07-14 13:06:56  
+
+# $2a$12$b6I/CRf0bfcvJevceIPCn.qj8pQB0/kmn8eN5MEyzxloQGt5X7.vm  
+login: 
+  name: MyString
+  phone: 123
+  email: nhson219@gmail.com
+  password_digest: <%= default_password_digest %>
+  dob: 2020-07-14 13:06:56  

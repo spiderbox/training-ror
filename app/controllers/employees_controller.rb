@@ -14,9 +14,9 @@ class EmployeesController < ApplicationController
     end
 
     def index
-
+        # render json: @response
         begin
-            position = params[:page].to_i * PAGINATION_LIMIT - PAGINATION_LIMIT
+            position = params[:page] ? params[:page].to_i * PAGINATION_LIMIT - PAGINATION_LIMIT : 1
             
             @employees = Employee
             if (params[:search])
@@ -24,15 +24,15 @@ class EmployeesController < ApplicationController
                                         .or(Employee.where(name: params[:search]))
             end
             total_rows = @employees.count
-            @employees = @employees.limit(PAGINATION_LIMIT).offset(position)
+            @employees = @employees.limit(PAGINATION_LIMIT).offset(position).order(id: :desc)
             # get all
             
 
             if @employees
-                @response[:status] = HTTP_STATUS_SUCCESS
-                @response[:message] = :ok
+                # @response[:status] = HTTP_STATUS_SUCCESS
+                # @response[:message] = :ok
                 
-                @response = data_response(@response, @employees)
+                # @response = data_response(@response, @employees)
 
 
                 #this is test
@@ -82,6 +82,7 @@ class EmployeesController < ApplicationController
         
         begin
             @employee = Employee.find(params[:id])
+            
             if @employee.update(employee_params)
 
                 @response[:status] = HTTP_STATUS_SUCCESS
@@ -101,14 +102,14 @@ class EmployeesController < ApplicationController
 
         begin
             @employee = Employee.find_by_email(params[:email])
-        
+            
             if BCrypt::Password.new(@employee.password_digest) == params[:password]
                 @response[:status] = HTTP_STATUS_SUCCESS
                 @response[:message] = :ok
             
                 @response = data_response(@response, @employees)
             end
-        rescue Exception => e    
+        rescue Exception => e
             # exception
             logger.error e.message
         end                    
@@ -121,6 +122,7 @@ class EmployeesController < ApplicationController
 
         begin
             @employee = Employee.find(params[:id])
+
             if @employee.destroy
                 @response[:status] = HTTP_STATUS_SUCCESS
                 @response[:message] = :ok

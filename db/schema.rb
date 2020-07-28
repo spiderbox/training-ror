@@ -12,11 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2020_07_14_060656) do
 
-  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "phone"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "dob"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
