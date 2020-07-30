@@ -6,4 +6,6 @@ class Employee < ApplicationRecord
     validates :dob, presence: true, on: :create
     validates :phone, presence: true, on: :create
     validates :email, presence: true, on: :create
+
+    has_many :post
 end

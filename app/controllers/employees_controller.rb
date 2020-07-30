@@ -16,16 +16,16 @@ class EmployeesController < ApplicationController
     def index
         # render json: @response
         begin
-            position = params[:page] ? params[:page].to_i * PAGINATION_LIMIT - PAGINATION_LIMIT : 1
+            position = params[:page] ? params[:page].to_i * PAGINATION_LIMIT - PAGINATION_LIMIT : 0
             
-            @employees = Employee
+            @employees = Employee.includes(:post)
             if (params[:search])
                 @employees = @employees.where(email: params[:search])
                                         .or(Employee.where(name: params[:search]))
             end
             total_rows = @employees.count
             @employees = @employees.limit(PAGINATION_LIMIT).offset(position).order(id: :desc)
-            # get all
+            # debugger
             
 
             if @employees
@@ -41,7 +41,7 @@ class EmployeesController < ApplicationController
                 @response_2[:message] = :ok
 
                 @response_2[:total_rows] = total_rows
-                @response_2[:data] = @employees
+                @response_2[:data] = @employees.as_json(include: :post)
                 @response_2[:page] = params[:page]
 
                 @response_2 = data_response_2 @response_2
